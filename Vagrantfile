@@ -10,27 +10,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/'\
     'current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
 
-  config.vm.hostname = 'unbound'
-  config.vm.synced_folder 'fstrm', '/home/vagrant/fstrm'
+  config.vm.provider :virtualbox do |vb|
+    vb.cpus = 4
+    vb.memory = 4096
+  end
 
-  # config.vm.provider :aws do |aws, override|
-  #   aws.access_key_id = Secret.aws_key
-  #   aws.secret_access_key = Secret.aws_secret
-  #   aws.keypair_name = Secret.key_pair
-  #   aws.subnet_id = Secret.subnet_id
-  #   aws.security_groups = Secret.security_groups
-  #   aws.elb = Secret.elb
-  #
-  #   ## us-east-1: trusty/14.04 LTS amd64 hvm:ebs 20150528
-  #   aws.ami = 'ami-8fc525e4'
-  #   aws.instance_type = 't2.micro'
-  #
-  #   override.vm.box = 'aws'
-  #   override.vm.box_url = 'https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box'
-  #
-  #   override.ssh.username = 'ubuntu'
-  #   override.ssh.private_key_path = File.join(ENV['HOME'], '.ssh/id_rsa')
-  # end
+  config.vm.hostname = 'unbound-build'
+  # config.vm.synced_folder '../unbound', '/home/vagrant/unbound'
 
   config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true

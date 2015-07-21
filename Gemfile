@@ -13,5 +13,4 @@ group :development, :plugins do
   gem 'vagrant-aws'
   gem 'vagrant-berkshelf'
   gem 'vagrant-omnibus'
-  gem 'vagrant-secret'
 end
