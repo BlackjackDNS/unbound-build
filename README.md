@@ -4,9 +4,17 @@ Provision a Vagrant VM to build the Unbound fork at https://github.com/Blackjack
 
 ## Usage
 
-* Clone it
-* Install it's bindle `bundle install`
-* Start it `ulimit -n 1024; VAGRANT_I_KNOW_WHAT_IM_DOING_PLEASE_BE_QUIET=1 bundle exec vagrant up`
+1. Install bundler
+
+    `sudo gem install bundler -v 1.7.15`
+
+1. Install the bundler
+
+    `bundle install`
+
+1. Use the included helper to run vagrant
+
+    `./vagrant up`
 
 ## License
 

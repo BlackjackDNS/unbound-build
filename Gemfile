@@ -9,7 +9,7 @@ gem 'vagrant', :github => 'mitchellh/vagrant',
                :tag => 'v1.7.2',
                :group => :development
 
-group :development, :plugins do
+group :plugins do
   gem 'vagrant-aws'
   gem 'vagrant-berkshelf'
   gem 'vagrant-omnibus'
