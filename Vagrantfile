@@ -24,7 +24,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      :vagrant => true
+      :vagrant => true,
+      'unbound-build' => {
+        # :local => true,
+        :dir => '/home/vagrant/unbound'
+      }
     }
 
     chef.run_list = ['unbound-build::default']

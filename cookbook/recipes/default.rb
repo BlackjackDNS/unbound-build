@@ -69,4 +69,23 @@ git node['unbound-build']['dir'] do
   reference node['unbound-build']['reference']
   user node['unbound-build']['user']
   group node['unbound-build']['user']
+
+  ## Get the Unbound source some other way
+  not_if { node['unbound-build']['local'] }
+end
+
+[
+  'autoreconf -ivf',
+  './configure --enable-dnstap',
+  "make -j#{ node['cpu']['total'] }",
+].each do |command|
+  execute command do
+    cwd node['unbound-build']['dir']
+    user node['unbound-build']['user']
+    group node['unbound-build']['user']
+  end
+end
+
+execute 'make install' do
+  cwd node['unbound-build']['dir']
 end
